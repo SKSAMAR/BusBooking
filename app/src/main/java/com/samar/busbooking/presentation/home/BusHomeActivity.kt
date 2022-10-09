@@ -19,7 +19,7 @@ class BusHomeActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    HomeScreen()
                 }
             }
         }
