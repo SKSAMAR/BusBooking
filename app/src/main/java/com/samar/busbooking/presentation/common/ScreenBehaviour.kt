@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -14,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.samar.busbooking.domain.model.AnimationModel
 import com.samar.busbooking.domain.model.ScreenState
 import com.samar.busbooking.util.common.ConnectionLiveData
 import com.samar.busbooking.util.common.sdp
@@ -31,26 +33,29 @@ fun<T> BaseScaffold(
     parentPadding: Dp = 0.dp,
     connectionLiveData: ConnectionLiveData = ConnectionLiveData(context),
     state: State<ScreenState<T>>,
+    animationModel: MutableState<AnimationModel?>? = null,
     content: @Composable ColumnScope.() -> Unit,
 ){
-
     val isNetworkAvailable = connectionLiveData.observeAsState( false)
     Scaffold(
-        topBar = topBar,
         bottomBar = bottomBar,
     ) {
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize().padding(it)
         ) {
-            Box(
+            Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(parentPadding)
-                    .weight(1f),
-                content = {
-                    BasicScreenState(state = state, modifier = modifier,  content = content)
-                }
-            )
+                    .weight(1f)
+            ) {
+                topBar()
+                Box(
+                    content = {
+                        BasicScreenState(state = state, modifier = modifier,  content = content, animationModel = animationModel)
+                    }
+                )
+            }
             AnimatedVisibility(
                 visible = !isNetworkAvailable.value,
                 modifier = Modifier

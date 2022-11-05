@@ -7,6 +7,7 @@
 
 
     <application
+        android:name=".BusApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -19,7 +20,8 @@
         <activity
             android:name=".presentation.home.BusHomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.BusBooking">
+            android:theme="@style/Theme.BusBooking"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,6 +30,63 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".presentation.onaddress.LocationSelectionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusBooking"
+            android:launchMode="singleTop"
+            />
+
+        <activity
+            android:name=".presentation.histories.HistoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusBooking"
+            android:launchMode="singleTop"
+            />
+
+        <activity
+            android:name=".presentation.ticket.TicketActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusBooking"
+            android:launchMode="singleTop"
+            />
+
+        <activity
+            android:name=".presentation.available.AvailableActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusBooking"
+            android:launchMode="singleTop"
+            />
+
+        <activity
+            android:name=".presentation.tripdetails.TripDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusBooking"
+            android:launchMode="singleTop"
+            />
+
+        <activity
+            android:name=".presentation.response.ResponseActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusBooking"
+            android:launchMode="singleTop"
+            />
+
+        <activity
+            android:name=".presentation.bodrop.BoDropActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusBooking"
+            android:launchMode="singleTop"
+            />
+
+        <activity
+            android:name=".presentation.blockticket.BlockTicketActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BusBooking"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            />
 
     </application>
 
